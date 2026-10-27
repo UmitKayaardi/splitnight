@@ -2,14 +2,14 @@
  * HTTP handlers for the serverless functions. They use only the Web Request/Response API,
  * so the same code runs on Vercel, inside the Vite dev server and in unit tests.
  */
-import { AssignRequestSchema, LIMITS, type Health } from '../shared/schemas';
-import { createGroqClient, type AiClient } from './ai';
-import { proposeAssignments } from './assign/assign';
-import { getConfig, type ServerConfig } from './config';
-import { ApiError, errorResponse, json, toApiError } from './errors';
-import { RateLimiter, clientIp } from './rateLimit';
-import { parseReceiptImage } from './receipt/parse';
-import { transcribeAudio, vocabularyHint } from './speech/transcribe';
+import { AssignRequestSchema, LIMITS, type Health } from '../shared/schemas.js';
+import { createGroqClient, type AiClient } from './ai.js';
+import { proposeAssignments } from './assign/assign.js';
+import { getConfig, type ServerConfig } from './config.js';
+import { ApiError, errorResponse, json, toApiError } from './errors.js';
+import { RateLimiter, clientIp } from './rateLimit.js';
+import { parseReceiptImage } from './receipt/parse.js';
+import { transcribeAudio, vocabularyHint } from './speech/transcribe.js';
 
 export interface HandlerDeps {
   config: ServerConfig;

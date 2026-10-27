@@ -1,7 +1,7 @@
-import type { TranscribeResponse } from '../../shared/schemas';
-import type { AiClient } from '../ai';
-import type { ServerConfig } from '../config';
-import { logUpstream, toApiError } from '../errors';
+import type { TranscribeResponse } from '../../shared/schemas.js';
+import type { AiClient } from '../ai.js';
+import type { ServerConfig } from '../config.js';
+import { logUpstream, toApiError } from '../errors.js';
 
 /**
  * Whisper's prompt is limited to ~224 tokens. A short list of the people's names and the

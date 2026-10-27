@@ -4,11 +4,11 @@ import {
   type AssignResponse,
   type ProposedAssignment,
   type AssignRequestSchema,
-} from '../../shared/schemas';
-import { extractJson, type AiClient } from '../ai';
-import type { ServerConfig } from '../config';
-import { ApiError, logUpstream, toApiError } from '../errors';
-import { ASSIGN_JSON_SCHEMA, assignSystemPrompt, assignUserPrompt } from './prompt';
+} from '../../shared/schemas.js';
+import { extractJson, type AiClient } from '../ai.js';
+import type { ServerConfig } from '../config.js';
+import { ApiError, logUpstream, toApiError } from '../errors.js';
+import { ASSIGN_JSON_SCHEMA, assignSystemPrompt, assignUserPrompt } from './prompt.js';
 
 type AssignInput = z.output<typeof AssignRequestSchema>;
 

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { minorDigits, isValidCurrency } from '../../src/lib/money/format';
+import { minorDigits, isValidCurrency } from '../../src/lib/money/format.js';
 import {
   CATEGORIES,
   ParsedReceiptSchema,
@@ -8,11 +8,11 @@ import {
   type ParsedReceipt,
   type ReceiptItem,
   type ReceiptWarning,
-} from '../../shared/schemas';
-import { extractJson, type AiClient } from '../ai';
-import type { ServerConfig } from '../config';
-import { ApiError, logUpstream, toApiError } from '../errors';
-import { RECEIPT_SYSTEM_PROMPT, RECEIPT_USER_PROMPT, repairPrompt } from './prompt';
+} from '../../shared/schemas.js';
+import { extractJson, type AiClient } from '../ai.js';
+import type { ServerConfig } from '../config.js';
+import { ApiError, logUpstream, toApiError } from '../errors.js';
+import { RECEIPT_SYSTEM_PROMPT, RECEIPT_USER_PROMPT, repairPrompt } from './prompt.js';
 
 /** Numbers sometimes arrive as strings ("4,50", "£4.50"); accept them leniently. */
 const looseNumber = z.preprocess((value) => {

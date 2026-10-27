@@ -54,7 +54,10 @@ export function feedback(kind: FeedbackKind): void {
   if (!usePrefs.getState().sound) return;
 
   const pattern = VIBRATION[kind];
-  if (pattern && typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+  // Browsers only allow vibration after the person has tapped the page.
+  const activated =
+    typeof navigator !== 'undefined' && navigator.userActivation?.hasBeenActive !== false;
+  if (pattern && activated && 'vibrate' in navigator) {
     try {
       navigator.vibrate(pattern);
     } catch {

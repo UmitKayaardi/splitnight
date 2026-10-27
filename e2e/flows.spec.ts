@@ -238,3 +238,13 @@ test('finished nights appear in Recent nights', async ({ page }) => {
   await page.getByRole('button', { name: 'Recent nights' }).click();
   await expect(page.getByText('4 friends · £118.29')).toBeVisible();
 });
+
+test('the confetti celebration runs under the production CSP', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await startSampleToAssign(page);
+  await finishToResults(page);
+  await expect(page.getByRole('heading', { name: 'The damage' })).toBeVisible();
+  // canvas-confetti draws on a canvas it adds to the page (and may use a blob: worker).
+  await expect(page.locator('canvas')).toHaveCount(1, { timeout: 5_000 });
+  await page.waitForTimeout(1_000);
+});

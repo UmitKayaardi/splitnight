@@ -3,7 +3,7 @@
  * replace it with a fake and never call Groq.
  */
 import Groq, { toFile } from 'groq-sdk';
-import type { ServerConfig } from './config';
+import type { ServerConfig } from './config.js';
 
 export type ChatContent =
   | string

@@ -1,4 +1,4 @@
-import { RECEIPT_WARNINGS } from '../../shared/schemas';
+import { RECEIPT_WARNINGS } from '../../shared/schemas.js';
 
 export const RECEIPT_SYSTEM_PROMPT = `You read photos of restaurant, bar, café and shop receipts and return their contents as JSON.
 

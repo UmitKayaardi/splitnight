@@ -1,7 +1,7 @@
 // @vitest-environment node
-import { ApiErrorBodySchema, AssignResponseSchema, ParsedReceiptSchema } from '../shared/schemas';
-import type { AiClient, ChatJsonRequest } from './ai';
-import { getConfig } from './config';
+import { ApiErrorBodySchema, AssignResponseSchema, ParsedReceiptSchema } from '../shared/schemas.js';
+import type { AiClient, ChatJsonRequest } from './ai.js';
+import { getConfig } from './config.js';
 import {
   handleAssign,
   handleHealth,
@@ -9,8 +9,8 @@ import {
   handleTranscribe,
   sniffImageType,
   type HandlerDeps,
-} from './handlers';
-import { RateLimiter } from './rateLimit';
+} from './handlers.js';
+import { RateLimiter } from './rateLimit.js';
 
 const JPEG = new Uint8Array([0xff, 0xd8, 0xff, 0xe0, ...new Array(64).fill(1)]);
 

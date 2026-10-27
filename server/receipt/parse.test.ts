@@ -1,6 +1,6 @@
 // @vitest-environment node
-import { normaliseReceipt, RawReceiptSchema } from './parse';
-import { extractJson } from '../ai';
+import { normaliseReceipt, RawReceiptSchema } from './parse.js';
+import { extractJson } from '../ai.js';
 
 const ids = (i: number) => `r${i + 1}`;
 

@@ -1,4 +1,4 @@
-import type { ErrorCode } from '../shared/schemas';
+import type { ErrorCode } from '../shared/schemas.js';
 
 const STATUS: Record<ErrorCode, number> = {
   RATE_LIMITED: 429,

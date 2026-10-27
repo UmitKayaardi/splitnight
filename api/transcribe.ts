@@ -1,4 +1,4 @@
-import { handleTranscribe } from '../server/handlers';
+import { handleTranscribe } from '../server/handlers.js';
 
 export function POST(request: Request): Promise<Response> {
   return handleTranscribe(request);
