@@ -36,9 +36,7 @@ function localApi(): Plugin {
           }
           headers.set('x-forwarded-for', req.socket.remoteAddress ?? '127.0.0.1');
           const body = chunks.length > 0 ? Buffer.concat(chunks) : undefined;
-          const response = await handler(
-            new Request(url, { method: req.method, headers, body }),
-          );
+          const response = await handler(new Request(url, { method: req.method, headers, body }));
           res.statusCode = response.status;
           response.headers.forEach((value, key) => res.setHeader(key, value));
           res.end(Buffer.from(await response.arrayBuffer()));

@@ -5,7 +5,12 @@ import { readFileSync, statSync } from 'node:fs';
 
 // Built from parts so this file does not match its own pattern.
 const KEY_PATTERN = new RegExp(['g', 's', 'k', '_'].join('') + '[A-Za-z0-9]{20,}');
-const FORBIDDEN_PATHS = [/^test-receipts\//i, /^\.env($|\.(?!example$))/i, /^SPLITNIGHT_PLAN\.md$/i, /^FINAL_REPORT\.md$/i];
+const FORBIDDEN_PATHS = [
+  /^test-receipts\//i,
+  /^\.env($|\.(?!example$))/i,
+  /^SPLITNIGHT_PLAN\.md$/i,
+  /^FINAL_REPORT\.md$/i,
+];
 
 let files;
 try {
