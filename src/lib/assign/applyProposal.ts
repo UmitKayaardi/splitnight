@@ -37,7 +37,8 @@ export function applyProposal<T extends ProposalItem>(
   items: readonly T[],
   assignments: Assignments,
   proposal: readonly ProposedAssignment[],
-  newId: () => string,
+  /** Makes an id for a line split off from `fromId`. */
+  newId: (fromId: string) => string,
 ): AppliedProposal<T> {
   const nextItems = [...items];
   const next: Assignments = { ...assignments };
@@ -59,7 +60,7 @@ export function applyProposal<T extends ProposalItem>(
       changed.push(item.id);
       continue;
     }
-    const [part, rest] = splitLine(item, entry.units!, newId());
+    const [part, rest] = splitLine(item, entry.units!, newId(item.id));
     nextItems.splice(index, 1, part, rest);
     next[part.id] = shares;
     changed.push(part.id);

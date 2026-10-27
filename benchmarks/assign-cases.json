@@ -1,0 +1,851 @@
+{
+  "_about": "Synthetic sentence-understanding cases for /api/assign. All menus and names are fictional. `current` = shares before the sentence (weights). `expected` = units of each line each person ends up with after applying the proposal (e.g. 0.5 = half of a one-item line). Lines missing from `expected` must end up unassigned.",
+  "menus": {
+    "grill": {
+      "items": [
+        { "id": "i1", "name": "Mixed Meze Platter", "quantity": 1 },
+        { "id": "i2", "name": "Halloumi Fries", "quantity": 1 },
+        { "id": "i3", "name": "Adana Kebab", "quantity": 2 },
+        { "id": "i4", "name": "Chicken Shish", "quantity": 1 },
+        { "id": "i5", "name": "Shepherd Salad", "quantity": 1 },
+        { "id": "i6", "name": "Baklava", "quantity": 1 },
+        { "id": "i7", "name": "Lager", "quantity": 3 },
+        { "id": "i8", "name": "Cola", "quantity": 1 },
+        { "id": "i9", "name": "Ayran", "quantity": 1 }
+      ],
+      "people": [
+        { "id": "p1", "name": "Ahmet" },
+        { "id": "p2", "name": "Ayşe" },
+        { "id": "p3", "name": "Can" },
+        { "id": "p4", "name": "Sam" }
+      ]
+    },
+    "pizza": {
+      "items": [
+        { "id": "i1", "name": "Garlic Bread", "quantity": 1 },
+        { "id": "i2", "name": "Margherita", "quantity": 1 },
+        { "id": "i3", "name": "Diavola", "quantity": 1 },
+        { "id": "i4", "name": "Quattro Formaggi", "quantity": 1 },
+        { "id": "i5", "name": "Tiramisu", "quantity": 2 },
+        { "id": "i6", "name": "House Red (bottle)", "quantity": 1 },
+        { "id": "i7", "name": "Sparkling Water", "quantity": 2 },
+        { "id": "i8", "name": "Rocket Salad", "quantity": 1 }
+      ],
+      "people": [
+        { "id": "p1", "name": "Mia" },
+        { "id": "p2", "name": "Leo" },
+        { "id": "p3", "name": "Zoe" },
+        { "id": "p4", "name": "Jonathan" },
+        { "id": "p5", "name": "Siobhán" }
+      ]
+    },
+    "cafe": {
+      "items": [
+        { "id": "i1", "name": "Flat White", "quantity": 3 },
+        { "id": "i2", "name": "Oat Latte", "quantity": 1 },
+        { "id": "i3", "name": "Full English", "quantity": 1 },
+        { "id": "i4", "name": "Avocado Toast", "quantity": 1 },
+        { "id": "i5", "name": "Buttermilk Pancakes", "quantity": 1 },
+        { "id": "i6", "name": "Carrot Cake", "quantity": 1 },
+        { "id": "i7", "name": "Fresh Orange Juice", "quantity": 2 },
+        { "id": "i8", "name": "Croissant", "quantity": 2 }
+      ],
+      "people": [
+        { "id": "p1", "name": "Priya" },
+        { "id": "p2", "name": "Tom" },
+        { "id": "p3", "name": "Ella" },
+        { "id": "p4", "name": "José" }
+      ]
+    },
+    "pub": {
+      "items": [
+        { "id": "i1", "name": "Fish and Chips", "quantity": 2 },
+        { "id": "i2", "name": "Cheeseburger", "quantity": 1 },
+        { "id": "i3", "name": "Chips", "quantity": 1 },
+        { "id": "i4", "name": "Onion Rings", "quantity": 1 },
+        { "id": "i5", "name": "Pint of Guinness", "quantity": 4 },
+        { "id": "i6", "name": "Lemonade", "quantity": 1 },
+        { "id": "i7", "name": "Sticky Toffee Pudding", "quantity": 1 }
+      ],
+      "people": [
+        { "id": "p1", "name": "Olivia" },
+        { "id": "p2", "name": "Mohammed" },
+        { "id": "p3", "name": "Chloé" },
+        { "id": "p4", "name": "Liam" },
+        { "id": "p5", "name": "Zoë" }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "en01",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ahmet had the salad",
+      "expected": { "i5": { "p1": 1 } }
+    },
+    {
+      "id": "en02",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ayşe had the chicken shish and Can had the cola",
+      "expected": { "i4": { "p2": 1 }, "i8": { "p3": 1 } }
+    },
+    {
+      "id": "en03",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ahmet had the salad, Ayşe and Can shared the two kebabs",
+      "expected": { "i5": { "p1": 1 }, "i3": { "p2": 1, "p3": 1 } }
+    },
+    {
+      "id": "en04",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Sam had two of the three lagers",
+      "expected": { "i7": { "p4": 2 } }
+    },
+    {
+      "id": "en05",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Sam had two of the lagers and Can had the other one",
+      "expected": { "i7": { "p4": 2, "p3": 1 } }
+    },
+    {
+      "id": "en06",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Everyone shared the meze platter",
+      "expected": { "i1": { "p1": 0.25, "p2": 0.25, "p3": 0.25, "p4": 0.25 } }
+    },
+    {
+      "id": "en07",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Everyone except Sam shared the baklava",
+      "expected": { "i6": { "p1": 0.3333, "p2": 0.3333, "p3": 0.3333 } }
+    },
+    {
+      "id": "en08",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ayşe had the ayran and the halloumi fries",
+      "expected": { "i9": { "p2": 1 }, "i2": { "p2": 1 } }
+    },
+    {
+      "id": "en09",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Can and Sam split the halloumi fries",
+      "expected": { "i2": { "p3": 0.5, "p4": 0.5 } }
+    },
+    {
+      "id": "en10",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Each of us had a lager except Ayşe",
+      "expected": { "i7": { "p1": 1, "p3": 1, "p4": 1 } }
+    },
+    {
+      "id": "en11",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Sam had everything else",
+      "current": { "i5": { "p1": 1 }, "i3": { "p2": 1, "p3": 1 } },
+      "expected": {
+        "i5": { "p1": 1 },
+        "i3": { "p2": 1, "p3": 1 },
+        "i1": { "p4": 1 },
+        "i2": { "p4": 1 },
+        "i4": { "p4": 1 },
+        "i6": { "p4": 1 },
+        "i7": { "p4": 3 },
+        "i8": { "p4": 1 },
+        "i9": { "p4": 1 }
+      }
+    },
+    {
+      "id": "en12",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Actually Can had the cola",
+      "current": { "i8": { "p1": 1 } },
+      "expected": { "i8": { "p3": 1 } }
+    },
+    {
+      "id": "en13",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Sam also had some of the meze",
+      "current": { "i1": { "p1": 1, "p2": 1 } },
+      "expected": { "i1": { "p1": 0.3333, "p2": 0.3333, "p4": 0.3333 } }
+    },
+    {
+      "id": "en14",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Take Sam off the baklava",
+      "current": { "i6": { "p1": 1, "p2": 1, "p3": 1, "p4": 1 } },
+      "expected": { "i6": { "p1": 0.3333, "p2": 0.3333, "p3": 0.3333 } }
+    },
+    {
+      "id": "en15",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "aysha had the salad",
+      "expected": { "i5": { "p2": 1 } }
+    },
+    {
+      "id": "en16",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "ahmet had both kebabs",
+      "expected": { "i3": { "p1": 2 } }
+    },
+    {
+      "id": "en17",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ahmet and Ayşe had a kebab each",
+      "expected": { "i3": { "p1": 1, "p2": 1 } }
+    },
+    {
+      "id": "en18",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Can had the coke",
+      "expected": { "i8": { "p3": 1 } }
+    },
+    {
+      "id": "en19",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Sam had the yoghurt drink",
+      "expected": { "i9": { "p4": 1 } }
+    },
+    {
+      "id": "en20",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ahmet had both starters",
+      "expected": { "i1": { "p1": 1 }, "i2": { "p1": 1 } }
+    },
+    {
+      "id": "en21",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ayşe had half of the chicken shish and Can had the other half",
+      "expected": { "i4": { "p2": 0.5, "p3": 0.5 } }
+    },
+    {
+      "id": "en22",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Can had twice as much of the meze platter as Ahmet",
+      "expected": { "i1": { "p3": 0.6667, "p1": 0.3333 } }
+    },
+    {
+      "id": "en23",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "All the drinks were Sam's",
+      "expected": { "i7": { "p4": 3 }, "i8": { "p4": 1 }, "i9": { "p4": 1 } }
+    },
+    {
+      "id": "en24",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ahmet had the salad. Ayşe had the shish. Can had the baklava.",
+      "expected": { "i5": { "p1": 1 }, "i4": { "p2": 1 }, "i6": { "p3": 1 } }
+    },
+    {
+      "id": "en25",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "ok so um ahmet had the salad and uh can had the baklava",
+      "expected": { "i5": { "p1": 1 }, "i6": { "p3": 1 } }
+    },
+    {
+      "id": "en26",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ahmet had the salad and Kerem had the cola",
+      "expected": { "i5": { "p1": 1 } }
+    },
+    {
+      "id": "en27",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Sam had the burger",
+      "expected": {}
+    },
+    {
+      "id": "en28",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Everyone had a lager except Can",
+      "expected": { "i7": { "p1": 1, "p2": 1, "p4": 1 } }
+    },
+    {
+      "id": "en29",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Ahmet, Ayşe and Can shared the halloumi fries and Sam had the ayran",
+      "expected": { "i2": { "p1": 0.3333, "p2": 0.3333, "p3": 0.3333 }, "i9": { "p4": 1 } }
+    },
+    {
+      "id": "en30",
+      "lang": "en",
+      "menu": "grill",
+      "utterance": "Actually Can had one of the lagers",
+      "current": { "i7": { "p4": 1 } },
+      "expected": { "i7": { "p4": 2, "p3": 1 } }
+    },
+    {
+      "id": "en31",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "Mia had the Diavola, Leo and Jonathan split the Margherita",
+      "expected": { "i3": { "p1": 1 }, "i2": { "p2": 0.5, "p4": 0.5 } }
+    },
+    {
+      "id": "en32",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "jon had the quattro formaggi",
+      "expected": { "i4": { "p4": 1 } }
+    },
+    {
+      "id": "en33",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "Siobhan had the rocket salad",
+      "expected": { "i8": { "p5": 1 } }
+    },
+    {
+      "id": "en34",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "We all shared the garlic bread and the wine",
+      "expected": {
+        "i1": { "p1": 0.2, "p2": 0.2, "p3": 0.2, "p4": 0.2, "p5": 0.2 },
+        "i6": { "p1": 0.2, "p2": 0.2, "p3": 0.2, "p4": 0.2, "p5": 0.2 }
+      }
+    },
+    {
+      "id": "en35",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "Zoe and Mia had a tiramisu each",
+      "expected": { "i5": { "p3": 1, "p1": 1 } }
+    },
+    {
+      "id": "en36",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "Leo had both sparkling waters",
+      "expected": { "i7": { "p2": 2 } }
+    },
+    {
+      "id": "en37",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "The fizzy water was shared by Mia and Zoe",
+      "expected": { "i7": { "p1": 1, "p3": 1 } }
+    },
+    {
+      "id": "en38",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "Everyone except Leo and Siobhán shared the wine",
+      "expected": { "i6": { "p1": 0.3333, "p3": 0.3333, "p4": 0.3333 } }
+    },
+    {
+      "id": "en39",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "Zoe had a tiramisu and Mia had the other one, the rest is for Leo",
+      "expected": {
+        "i5": { "p3": 1, "p1": 1 },
+        "i1": { "p2": 1 },
+        "i2": { "p2": 1 },
+        "i3": { "p2": 1 },
+        "i4": { "p2": 1 },
+        "i6": { "p2": 1 },
+        "i7": { "p2": 2 },
+        "i8": { "p2": 1 }
+      }
+    },
+    {
+      "id": "en40",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "No wait, the Margherita was Leo's",
+      "current": { "i2": { "p1": 1 } },
+      "expected": { "i2": { "p2": 1 } }
+    },
+    {
+      "id": "en41",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "Jonathan had the spicy salami pizza",
+      "expected": { "i3": { "p4": 1 } }
+    },
+    {
+      "id": "en42",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "MIA HAD THE GARLIC BREAD",
+      "expected": { "i1": { "p1": 1 } }
+    },
+    {
+      "id": "en43",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "leo had the four cheese pizza",
+      "expected": { "i4": { "p2": 1 } }
+    },
+    {
+      "id": "en44",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "Mia had one of the tiramisus",
+      "expected": { "i5": { "p1": 1 } }
+    },
+    {
+      "id": "en45",
+      "lang": "en",
+      "menu": "pizza",
+      "utterance": "Siobhán had a third of the wine and Leo had the rest of the wine",
+      "expected": { "i6": { "p5": 0.3333, "p2": 0.6667 } }
+    },
+    {
+      "id": "en46",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "Priya and Tom had a flat white each, Ella had the oat latte",
+      "expected": { "i1": { "p1": 1, "p2": 1 }, "i2": { "p3": 1 } }
+    },
+    {
+      "id": "en47",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "Tom had the full English, Ella and Priya shared the pancakes",
+      "expected": { "i3": { "p2": 1 }, "i5": { "p3": 0.5, "p1": 0.5 } }
+    },
+    {
+      "id": "en48",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "Everyone except Tom shared the carrot cake",
+      "expected": { "i6": { "p1": 0.3333, "p3": 0.3333, "p4": 0.3333 } }
+    },
+    {
+      "id": "en49",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "jose had the avocado toast and an orange juice",
+      "expected": { "i4": { "p4": 1 }, "i7": { "p4": 1 } }
+    },
+    {
+      "id": "en50",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "All three flat whites were Ella's",
+      "expected": { "i1": { "p3": 3 } }
+    },
+    {
+      "id": "en51",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "Priya had the fry-up",
+      "expected": { "i3": { "p1": 1 } }
+    },
+    {
+      "id": "en52",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "Tom and José had a croissant each",
+      "expected": { "i8": { "p2": 1, "p4": 1 } }
+    },
+    {
+      "id": "en53",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "Tom had two flat whites and Priya had one",
+      "expected": { "i1": { "p2": 2, "p1": 1 } }
+    },
+    {
+      "id": "en54",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "Ella didn't have the avocado toast, José did",
+      "current": { "i4": { "p3": 1 } },
+      "expected": { "i4": { "p4": 1 } }
+    },
+    {
+      "id": "en55",
+      "lang": "en",
+      "menu": "cafe",
+      "utterance": "Priya had the oat latte. Tom had a croissant. Ella had the other croissant and an orange juice.",
+      "expected": { "i2": { "p1": 1 }, "i8": { "p2": 1, "p3": 1 }, "i7": { "p3": 1 } }
+    },
+    {
+      "id": "en56",
+      "lang": "en",
+      "menu": "pub",
+      "utterance": "Mo and Liam had a fish and chips each",
+      "expected": { "i1": { "p2": 1, "p4": 1 } }
+    },
+    {
+      "id": "en57",
+      "lang": "en",
+      "menu": "pub",
+      "utterance": "Olivia had the burger and Chloe had the onion rings",
+      "expected": { "i2": { "p1": 1 }, "i4": { "p3": 1 } }
+    },
+    {
+      "id": "en58",
+      "lang": "en",
+      "menu": "pub",
+      "utterance": "We shared the chips between all of us",
+      "expected": { "i3": { "p1": 0.2, "p2": 0.2, "p3": 0.2, "p4": 0.2, "p5": 0.2 } }
+    },
+    {
+      "id": "en59",
+      "lang": "en",
+      "menu": "pub",
+      "utterance": "The four Guinness were for Liam, Mo, Olivia and Zoe",
+      "expected": { "i5": { "p4": 1, "p2": 1, "p1": 1, "p5": 1 } }
+    },
+    {
+      "id": "en60",
+      "lang": "en",
+      "menu": "pub",
+      "utterance": "Zoë had the lemonade and the sticky toffee pudding, everyone except Zoë shared the onion rings",
+      "expected": {
+        "i6": { "p5": 1 },
+        "i7": { "p5": 1 },
+        "i4": { "p1": 0.25, "p2": 0.25, "p3": 0.25, "p4": 0.25 }
+      }
+    },
+
+    {
+      "id": "tr01",
+      "lang": "tr",
+      "menu": "grill",
+      "utterance": "Salatayı Ahmet yedi, kebapları Ayşe ile Can paylaştı",
+      "expected": { "i5": { "p1": 1 }, "i3": { "p2": 1, "p3": 1 } }
+    },
+    {
+      "id": "tr02",
+      "lang": "tr",
+      "menu": "grill",
+      "utterance": "Meze tabağını hep birlikte paylaştık",
+      "expected": { "i1": { "p1": 0.25, "p2": 0.25, "p3": 0.25, "p4": 0.25 } }
+    },
+    {
+      "id": "tr03",
+      "lang": "tr",
+      "menu": "grill",
+      "utterance": "Üç biranın ikisini Sam içti, diğerini Can",
+      "expected": { "i7": { "p4": 2, "p3": 1 } }
+    },
+    {
+      "id": "tr04",
+      "lang": "tr",
+      "menu": "grill",
+      "utterance": "Baklavayı Sam hariç herkes paylaştı",
+      "expected": { "i6": { "p1": 0.3333, "p2": 0.3333, "p3": 0.3333 } }
+    },
+    {
+      "id": "tr05",
+      "lang": "tr",
+      "menu": "grill",
+      "utterance": "Kolayı Can içti, ayranı Ayşe",
+      "expected": { "i8": { "p3": 1 }, "i9": { "p2": 1 } }
+    },
+    {
+      "id": "tr06",
+      "lang": "tr",
+      "menu": "grill",
+      "utterance": "Aslında kolayı Sam içti",
+      "current": { "i8": { "p1": 1 } },
+      "expected": { "i8": { "p4": 1 } }
+    },
+    {
+      "id": "tr07",
+      "lang": "tr",
+      "menu": "grill",
+      "utterance": "Tavuk şişi Ahmet yedi, geri kalan her şey Sam'in",
+      "expected": {
+        "i4": { "p1": 1 },
+        "i1": { "p4": 1 },
+        "i2": { "p4": 1 },
+        "i3": { "p4": 2 },
+        "i5": { "p4": 1 },
+        "i6": { "p4": 1 },
+        "i7": { "p4": 3 },
+        "i8": { "p4": 1 },
+        "i9": { "p4": 1 }
+      }
+    },
+    {
+      "id": "tr08",
+      "lang": "tr",
+      "menu": "grill",
+      "utterance": "Hellim kızartmasını Ayşe ile Sam yarı yarıya paylaştı",
+      "expected": { "i2": { "p2": 0.5, "p4": 0.5 } }
+    },
+    {
+      "id": "tr09",
+      "lang": "tr",
+      "menu": "cafe",
+      "utterance": "Priya ve Tom birer flat white içti, oat latte Ella'nın",
+      "expected": { "i1": { "p1": 1, "p2": 1 }, "i2": { "p3": 1 } }
+    },
+    {
+      "id": "tr10",
+      "lang": "tr",
+      "menu": "pub",
+      "utterance": "Mo ile Liam birer fish and chips yedi, limonatayı Zoë içti",
+      "expected": { "i1": { "p2": 1, "p4": 1 }, "i6": { "p5": 1 } }
+    },
+
+    {
+      "id": "de01",
+      "lang": "de",
+      "menu": "grill",
+      "utterance": "Ahmet hatte den Salat, Ayşe und Can haben sich die Kebabs geteilt",
+      "expected": { "i5": { "p1": 1 }, "i3": { "p2": 1, "p3": 1 } }
+    },
+    {
+      "id": "de02",
+      "lang": "de",
+      "menu": "grill",
+      "utterance": "Die Meze-Platte haben wir alle geteilt",
+      "expected": { "i1": { "p1": 0.25, "p2": 0.25, "p3": 0.25, "p4": 0.25 } }
+    },
+    {
+      "id": "de03",
+      "lang": "de",
+      "menu": "grill",
+      "utterance": "Sam hatte zwei von den drei Bieren, Can das andere",
+      "expected": { "i7": { "p4": 2, "p3": 1 } }
+    },
+    {
+      "id": "de04",
+      "lang": "de",
+      "menu": "pizza",
+      "utterance": "Mia hatte die Diavola, Leo und Jonathan teilen sich die Margherita",
+      "expected": { "i3": { "p1": 1 }, "i2": { "p2": 0.5, "p4": 0.5 } }
+    },
+    {
+      "id": "de05",
+      "lang": "de",
+      "menu": "pizza",
+      "utterance": "Alle außer Leo haben den Wein geteilt",
+      "expected": { "i6": { "p1": 0.25, "p3": 0.25, "p4": 0.25, "p5": 0.25 } }
+    },
+    {
+      "id": "de06",
+      "lang": "de",
+      "menu": "pizza",
+      "utterance": "Nein, die Diavola war von Zoe",
+      "current": { "i3": { "p1": 1 } },
+      "expected": { "i3": { "p3": 1 } }
+    },
+    {
+      "id": "de07",
+      "lang": "de",
+      "menu": "cafe",
+      "utterance": "Tom hatte das Full English, Ella und Priya teilen sich die Pancakes",
+      "expected": { "i3": { "p2": 1 }, "i5": { "p3": 0.5, "p1": 0.5 } }
+    },
+    {
+      "id": "de08",
+      "lang": "de",
+      "menu": "cafe",
+      "utterance": "José hatte beide Croissants",
+      "expected": { "i8": { "p4": 2 } }
+    },
+    {
+      "id": "de09",
+      "lang": "de",
+      "menu": "pub",
+      "utterance": "Chloé hatte den Cheeseburger, der Rest geht an Olivia",
+      "expected": {
+        "i2": { "p3": 1 },
+        "i1": { "p1": 2 },
+        "i3": { "p1": 1 },
+        "i4": { "p1": 1 },
+        "i5": { "p1": 4 },
+        "i6": { "p1": 1 },
+        "i7": { "p1": 1 }
+      }
+    },
+    {
+      "id": "de10",
+      "lang": "de",
+      "menu": "pub",
+      "utterance": "Liam hatte zwei Guinness, Mo und Zoë jeweils eins",
+      "expected": { "i5": { "p4": 2, "p2": 1, "p5": 1 } }
+    },
+
+    {
+      "id": "fr01",
+      "lang": "fr",
+      "menu": "grill",
+      "utterance": "Ahmet a pris la salade, Ayşe et Can ont partagé les kebabs",
+      "expected": { "i5": { "p1": 1 }, "i3": { "p2": 1, "p3": 1 } }
+    },
+    {
+      "id": "fr02",
+      "lang": "fr",
+      "menu": "grill",
+      "utterance": "Tout le monde sauf Can a partagé le baklava",
+      "expected": { "i6": { "p1": 0.3333, "p2": 0.3333, "p4": 0.3333 } }
+    },
+    {
+      "id": "fr03",
+      "lang": "fr",
+      "menu": "grill",
+      "utterance": "Sam a bu deux des trois bières et Ahmet la dernière",
+      "expected": { "i7": { "p4": 2, "p1": 1 } }
+    },
+    {
+      "id": "fr04",
+      "lang": "fr",
+      "menu": "pizza",
+      "utterance": "Siobhán a pris la salade de roquette et Leo le pain à l'ail",
+      "expected": { "i8": { "p5": 1 }, "i1": { "p2": 1 } }
+    },
+    {
+      "id": "fr05",
+      "lang": "fr",
+      "menu": "pizza",
+      "utterance": "On a tous partagé le vin",
+      "expected": { "i6": { "p1": 0.2, "p2": 0.2, "p3": 0.2, "p4": 0.2, "p5": 0.2 } }
+    },
+    {
+      "id": "fr06",
+      "lang": "fr",
+      "menu": "pizza",
+      "utterance": "Zoe et Mia ont pris un tiramisu chacune",
+      "expected": { "i5": { "p3": 1, "p1": 1 } }
+    },
+    {
+      "id": "fr07",
+      "lang": "fr",
+      "menu": "cafe",
+      "utterance": "Priya a bu les deux jus d'orange",
+      "expected": { "i7": { "p1": 2 } }
+    },
+    {
+      "id": "fr08",
+      "lang": "fr",
+      "menu": "cafe",
+      "utterance": "En fait, les pancakes étaient pour Tom",
+      "current": { "i5": { "p1": 1 } },
+      "expected": { "i5": { "p2": 1 } }
+    },
+    {
+      "id": "fr09",
+      "lang": "fr",
+      "menu": "pub",
+      "utterance": "Olivia et Chloé ont partagé les rondelles d'oignon",
+      "expected": { "i4": { "p1": 0.5, "p3": 0.5 } }
+    },
+    {
+      "id": "fr10",
+      "lang": "fr",
+      "menu": "pub",
+      "utterance": "Mo a pris le burger, et le reste est pour Liam",
+      "expected": {
+        "i2": { "p2": 1 },
+        "i1": { "p4": 2 },
+        "i3": { "p4": 1 },
+        "i4": { "p4": 1 },
+        "i5": { "p4": 4 },
+        "i6": { "p4": 1 },
+        "i7": { "p4": 1 }
+      }
+    },
+
+    {
+      "id": "es01",
+      "lang": "es",
+      "menu": "grill",
+      "utterance": "Ahmet tomó la ensalada, Ayşe y Can compartieron los kebabs",
+      "expected": { "i5": { "p1": 1 }, "i3": { "p2": 1, "p3": 1 } }
+    },
+    {
+      "id": "es02",
+      "lang": "es",
+      "menu": "grill",
+      "utterance": "Todos compartimos la tabla de meze y el baklava",
+      "expected": {
+        "i1": { "p1": 0.25, "p2": 0.25, "p3": 0.25, "p4": 0.25 },
+        "i6": { "p1": 0.25, "p2": 0.25, "p3": 0.25, "p4": 0.25 }
+      }
+    },
+    {
+      "id": "es03",
+      "lang": "es",
+      "menu": "grill",
+      "utterance": "Sam se tomó dos de las tres cervezas y Can la otra",
+      "expected": { "i7": { "p4": 2, "p3": 1 } }
+    },
+    {
+      "id": "es04",
+      "lang": "es",
+      "menu": "pizza",
+      "utterance": "Mia tomó la Diavola y Leo la Quattro Formaggi",
+      "expected": { "i3": { "p1": 1 }, "i4": { "p2": 1 } }
+    },
+    {
+      "id": "es05",
+      "lang": "es",
+      "menu": "pizza",
+      "utterance": "Todos menos Jonathan compartimos el pan de ajo",
+      "expected": { "i1": { "p1": 0.25, "p2": 0.25, "p3": 0.25, "p5": 0.25 } }
+    },
+    {
+      "id": "es06",
+      "lang": "es",
+      "menu": "cafe",
+      "utterance": "Tom tomó el desayuno inglés completo",
+      "expected": { "i3": { "p2": 1 } }
+    },
+    {
+      "id": "es07",
+      "lang": "es",
+      "menu": "cafe",
+      "utterance": "José y Ella compartieron la tarta de zanahoria",
+      "expected": { "i6": { "p4": 0.5, "p3": 0.5 } }
+    },
+    {
+      "id": "es08",
+      "lang": "es",
+      "menu": "cafe",
+      "utterance": "No, el oat latte era de Priya",
+      "current": { "i2": { "p2": 1 } },
+      "expected": { "i2": { "p1": 1 } }
+    },
+    {
+      "id": "es09",
+      "lang": "es",
+      "menu": "pub",
+      "utterance": "Zoë se tomó la limonada y Olivia el pudding",
+      "expected": { "i6": { "p5": 1 }, "i7": { "p1": 1 } }
+    },
+    {
+      "id": "es10",
+      "lang": "es",
+      "menu": "pub",
+      "utterance": "Las cuatro Guinness eran para Liam",
+      "expected": { "i5": { "p4": 4 } }
+    }
+  ]
+}
