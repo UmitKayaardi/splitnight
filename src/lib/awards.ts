@@ -58,12 +58,21 @@ export function dishName(name: string): string {
     .trim();
 }
 
-/** The single person with the strictly highest positive score, or null on a tie. */
-function uniqueTop(scores: Array<[string, number]>, lowest = false): string | null {
+/** Spend-based titles need a real gap: a few pennies of rounding is not a "Big Spender". */
+const SPEND_MARGIN = 0.05;
+
+/**
+ * The single person with the clearly highest (or lowest) positive score, or null on a tie.
+ * `margin` is the minimum gap to the runner-up, relative to the winner's score.
+ */
+function uniqueTop(scores: Array<[string, number]>, lowest = false, margin = 0): string | null {
   const valid = scores.filter(([, v]) => v > 0);
   if (valid.length === 0) return null;
   const sorted = [...valid].sort((a, b) => (lowest ? a[1] - b[1] : b[1] - a[1]));
-  if (sorted.length > 1 && Math.abs(sorted[0]![1] - sorted[1]![1]) < 1e-9) return null;
+  if (sorted.length > 1) {
+    const gap = Math.abs(sorted[0]![1] - sorted[1]![1]);
+    if (gap < 1e-9 || gap < margin * Math.max(sorted[0]![1], sorted[1]![1])) return null;
+  }
   return sorted[0]![0];
 }
 
@@ -129,7 +138,14 @@ export function computeAwards(
     if (personId) candidates.push({ id, personId, ...(dish ? { dish } : {}) });
   };
 
-  add('big_spender', uniqueTop(by((s) => s.spend)));
+  add(
+    'big_spender',
+    uniqueTop(
+      by((s) => s.spend),
+      false,
+      SPEND_MARGIN,
+    ),
+  );
 
   // Dish royalty: the most units of a single dish (at least two), clear winner only.
   let best: { personId: string; name: string; units: number } | null = null;
@@ -147,7 +163,14 @@ export function computeAwards(
   }
   if (best && !tied) add('dish_royalty', best.personId, best.name);
 
-  add('dessert_goblin', uniqueTop(by((s) => s.dessertSpend)));
+  add(
+    'dessert_goblin',
+    uniqueTop(
+      by((s) => s.dessertSpend),
+      false,
+      SPEND_MARGIN,
+    ),
+  );
   add('drink_champion', uniqueTop(by((s) => s.drinkUnits)));
   add('sharing_is_caring', uniqueTop(by((s) => s.shared)));
   add('starter_pack', uniqueTop(by((s) => s.starterUnits)));
@@ -159,19 +182,25 @@ export function computeAwards(
   if (anyShared && loners.length === 1) add('lone_wolf', loners[0]!);
 
   add('variety_pack', uniqueTop(by((s) => s.distinct)));
+  const spends = people.map((id) => stats.get(id)!.spend);
+  const average = spends.reduce((a, b) => a + b, 0) / people.length;
+  // "Fair Share" only means something when the totals actually differ.
+  const spread = Math.max(...spends) - Math.min(...spends);
   if (people.length >= 3) {
     add(
       'light_eater',
       uniqueTop(
         by((s) => s.spend),
         true,
+        SPEND_MARGIN,
       ),
     );
-    const average = people.reduce((a, id) => a + stats.get(id)!.spend, 0) / people.length;
-    add(
-      'fair_share',
-      uniqueTop(by((s) => (s.spend > 0 ? 1 / (1 + Math.abs(s.spend - average)) : 0))),
-    );
+    if (spread >= 0.15 * average) {
+      add(
+        'fair_share',
+        uniqueTop(by((s) => (s.spend > 0 ? 1 / (1 + Math.abs(s.spend - average)) : 0))),
+      );
+    }
   }
 
   const pick = (cap: number) => {
@@ -189,3 +218,19 @@ export function computeAwards(
   const chosen = pick(2);
   return chosen.length >= 3 ? chosen : pick(3);
 }
+
+/** Decorative emoji shown next to each title. */
+export const AWARD_EMOJI: Record<AwardId, string> = {
+  big_spender: '👑',
+  dish_royalty: '🏆',
+  dessert_goblin: '🍰',
+  drink_champion: '🥤',
+  sharing_is_caring: '🤝',
+  starter_pack: '🥟',
+  main_character: '🎬',
+  side_quest: '🗺️',
+  lone_wolf: '🐺',
+  variety_pack: '🎨',
+  light_eater: '🪶',
+  fair_share: '⚖️',
+};

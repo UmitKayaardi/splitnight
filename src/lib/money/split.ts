@@ -70,14 +70,18 @@ export function computeSplit(input: SplitInput): SplitResult {
   let unassigned = 0;
   const unassignedItemIds: string[] = [];
 
-  for (const item of input.items) {
+  input.items.forEach((item, itemIndex) => {
     assertMinor(item.lineTotalMinor, `item ${item.id}`);
     itemsTotal += item.lineTotalMinor;
-    const shares = validShares(input.assignments[item.id], peopleSet);
+    // Leftover pennies go to the first sharers in line; rotating the line per item spreads
+    // them fairly instead of always charging the same person (still fully deterministic).
+    const valid = validShares(input.assignments[item.id], peopleSet);
+    const offset = valid.length > 0 ? itemIndex % valid.length : 0;
+    const shares = [...valid.slice(offset), ...valid.slice(0, offset)];
     if (shares.length === 0) {
       unassigned += item.lineTotalMinor;
       unassignedItemIds.push(item.id);
-      continue;
+      return;
     }
     const totalWeight = sum(shares.map((s) => s.weight));
     const parts = allocate(
@@ -97,7 +101,7 @@ export function computeSplit(input: SplitInput): SplitResult {
       breakdown.itemsMinor += part;
       if (item.category === 'dessert') dessertParts[personIndex]! += part;
     });
-  }
+  });
 
   const subtotals = breakdowns.map((b) => b.itemsMinor);
   const hasPeople = peopleIds.length > 0;
