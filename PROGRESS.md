@@ -22,8 +22,7 @@ Resume from the first phase that is not marked done. Run `npm run verify` before
 - Done: `test-receipts/ground-truth.json` (13 receipts, labelled + subtotal-checked), scoring libs with tests
   (`scripts/lib/receiptScore.ts`, `scripts/lib/assignScore.ts`), runners `scripts/benchmark-receipts.ts`
   and `scripts/benchmark-assign.ts`, dataset `benchmarks/assign-cases.json` (60 EN + 10 each TR/DE/FR/ES).
-- A receipt benchmark run was started at the end of the session; if `docs/BENCHMARK.md` has no receipts
-  section, re-run `npm run benchmark:receipts` (~6 min; pauses for free-tier limits).
+- Receipt benchmark DONE (results in docs/BENCHMARK.md: totals 12/12, item F1 93.3 %).
 - Next: `npm run benchmark:assign` (~20 min). Free-tier daily token budget for `openai/gpt-oss-120b`
   is roughly 200K tokens; one full run uses most of it, so iterate on failures with `-- --only en04,en10`.
 - Then: improve the prompt if English is weak, note iterations in docs/BENCHMARK.md, commit.
