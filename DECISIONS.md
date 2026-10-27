@@ -22,3 +22,7 @@ One line each: decision — reason.
 - 2026-10-27 · Only Latin/Latin-Ext font subsets are precached by the service worker (Turkish needs Latin-Ext); other subsets still load on demand.
 - 2026-10-27 · `vite preview` serves the same security headers as `vercel.json`, so E2E tests run under the production CSP.
 - 2026-10-27 · Translations are typed against the English source (`Translation` type) and tested for missing/extra keys and mismatched `{{placeholders}}`.
+- 2026-10-27 · Server-side relative imports carry explicit `.js` extensions — Vercel runs functions as native Node ES modules; a unit test guards against regressions.
+- 2026-10-27 · CSP allows `blob:` workers — canvas-confetti renders in a blob worker; an E2E test runs the celebration with motion on to catch this.
+- 2026-10-27 · Deployed with the Vercel CLI (no Git integration), as planned; Vercel's automatic GitHub connection failed harmlessly for the private repo.
+- 2026-10-27 · Assign prompt v2 adds a rule for item names contained in other names ("Chips" vs "Fish and Chips"); verified on the affected menu only, to stay within the free daily token budget.

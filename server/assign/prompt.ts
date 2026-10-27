@@ -36,7 +36,7 @@ How assignments work:
 - If the same item name appears on several lines, and the sentence does not say which, assign all matching lines the same way.
 
 Matching people: compare names ignoring case, accents and diacritics (Ayşe = Ayse = aysha), allow nicknames and close misspellings or mishearings ("Jon" = "John", "Mo" = "Mohammed"). If a name cannot be matched to anyone in PEOPLE, do not guess: put the phrase in "unmatched".
-Matching items: allow plurals, partial names, synonyms and translations ("chips" = "fries", "the coke" = "Cola", "bira" = "Lager", "the wine" = "House Red"). If nothing on the receipt fits, put the phrase in "unmatched".
+Matching items: allow plurals, partial names, synonyms and translations ("chips" = "fries", "the coke" = "Cola", "bira" = "Lager", "the wine" = "House Red"). If nothing on the receipt fits, put the phrase in "unmatched". When one item's name is part of another's (e.g. "Chips" and "Fish and Chips"), the words the person used refer to the closest whole name ("the chips" = "Chips", not "Fish and Chips").
 Pronouns like "I", "me", "my" have no known speaker: put such phrases in "unmatched" unless the person is named.
 
 Rules:
