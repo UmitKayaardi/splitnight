@@ -12,10 +12,10 @@ Resume from the first phase that is not marked done. Run `npm run verify` before
 | 5 — Fun layer | done (awards, confetti, sounds, haptics, share text/PNG/Web Share, Bill Roulette) |
 | 6 — Language, PWA, samples, polish | done (5 languages, PWA icons, CSP, code splitting) |
 | 7 — Benchmarks | IN PROGRESS — see below |
-| 8 — E2E & performance | not started |
+| 8 — E2E & performance | done (10 Playwright flows at phone size, API mocked, production CSP enforced; README screenshots in docs/screenshots) |
 | 9 — Documentation | not started |
 | 10 — Deploy | not started |
-| 11 — Recent nights | store + HistoryDialog exist; saving a night when Results opens is NOT wired yet |
+| 11 — Recent nights | done (saved when Results opens, updated on edits; Hall of Fame) |
 | 12 — Final report | not started |
 
 ## Phase 7 status (resume here)
@@ -28,4 +28,3 @@ Resume from the first phase that is not marked done. Run `npm run verify` before
 - Then: improve the prompt if English is weak, note iterations in docs/BENCHMARK.md, commit.
 
 ## Known issues
-- None blocking. CI runs e2e with `--pass-with-no-tests` until Phase 8 adds Playwright specs (remove the flag then).

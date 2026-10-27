@@ -10,6 +10,7 @@ import { useMoney, usePrefersReducedMotion } from '../../lib/hooks';
 import { buildSummary } from '../../lib/summary';
 import { setRoulette } from '../../state/actions';
 import { useBill } from '../../state/bill';
+import { useHistory } from '../../state/history';
 import { computeBill } from '../../state/derive';
 import { toast } from '../../state/toasts';
 import { stakeShort } from '../roulette/stake';
@@ -83,6 +84,25 @@ export function ResultsScreen() {
     awards,
     rouletteText: rouletteLine,
   });
+
+  // "Recent nights" lives only in this browser. Revisiting or editing updates the same entry.
+  const billId = useBill((s) => s.billId);
+  useEffect(() => {
+    useHistory.getState().save({
+      id: billId,
+      date: new Date().toISOString(),
+      totalMinor: result.billTotalMinor,
+      currency,
+      friends: data.people.length,
+      names: data.people.map((p) => p.name),
+      awards: awards.map((a) => ({
+        id: a.id,
+        personName: data.people.find((p) => p.id === a.personId)?.name ?? '',
+        ...(a.dish ? { dish: a.dish } : {}),
+      })),
+      ...(loser ? { rouletteLoser: loser.name } : {}),
+    });
+  }, [billId, result.billTotalMinor, currency, data.people, awards, loser]);
 
   useEffect(() => {
     if (celebrated.current) return;

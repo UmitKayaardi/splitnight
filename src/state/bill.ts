@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import type { ParsedReceipt } from '../../shared/schemas';
+import { newId } from '../lib/ids';
 import { isValidCurrency } from '../lib/money';
 import type { SampleId } from '../samples/samples';
 import type { BillData, BillSource, ExtrasSettings, ReceiptMeta, Step } from './types';
@@ -84,8 +85,8 @@ interface BillState {
   pendingImage: File | null;
   /** Increases with every new photo, so the scanning screen can start fresh. */
   scanAttempt: number;
-  /** True once the user has reached the results for this bill (for recent nights). */
-  savedToHistory: boolean;
+  /** Identifies this bill in "Recent nights", so revisiting the results updates one entry. */
+  billId: string;
 
   go: (step: Step) => void;
   /** Applies a change as one undoable step. The recipe edits a copy of the data. */
@@ -95,7 +96,6 @@ interface BillState {
   start: (data: BillData, step: Step) => void;
   scan: (file: File) => void;
   reset: () => void;
-  markSaved: () => void;
 }
 
 export const useBill = create<BillState>()((set, get) => ({
@@ -105,7 +105,7 @@ export const useBill = create<BillState>()((set, get) => ({
   future: [],
   pendingImage: null,
   scanAttempt: 0,
-  savedToHistory: false,
+  billId: newId('b'),
 
   go: (step) => set({ step }),
 
@@ -131,7 +131,7 @@ export const useBill = create<BillState>()((set, get) => ({
   },
 
   start: (data, step) =>
-    set({ data, step, past: [], future: [], pendingImage: null, savedToHistory: false }),
+    set({ data, step, past: [], future: [], pendingImage: null, billId: newId('b') }),
 
   scan: (file) =>
     set((s) => ({ pendingImage: file, step: 'scanning', scanAttempt: s.scanAttempt + 1 })),
@@ -143,10 +143,8 @@ export const useBill = create<BillState>()((set, get) => ({
       past: [],
       future: [],
       pendingImage: null,
-      savedToHistory: false,
+      billId: newId('b'),
     }),
-
-  markSaved: () => set({ savedToHistory: true }),
 }));
 
 /** A bill is "in progress" once it has items or people worth coming back to. */
