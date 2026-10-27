@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 584" width="340" height="584" role="img" aria-label="Sample receipt from Ember &amp; Moon Grill">
+  <rect width="100%" height="100%" fill="#f4efe6"/>
+  <path d="M0 8 L340 8 L340 580 L340 580 L326 572 L312 580 L298 572 L284 580 L270 572 L256 580 L242 572 L228 580 L214 572 L200 580 L186 572 L172 580 L158 572 L144 580 L130 572 L116 580 L102 572 L88 580 L74 572 L60 580 L46 572 L32 580 L18 572 L4 580 L0 572 Z" fill="#fffdf8" stroke="#e4dacb"/>
+  <text x="170" y="46" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="18" font-weight="700" text-anchor="middle" fill="#2b2622">EMBER &amp; MOON GRILL</text>
+  <text x="170" y="68" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="12" font-weight="400" text-anchor="middle" fill="#2b2622">14 Lantern Row</text>
+  <text x="170" y="84" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="12" font-weight="400" text-anchor="middle" fill="#2b2622">London N8 4QX</text>
+  <text x="22" y="108" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">14/03/2026</text>
+  <text x="318" y="108" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">20:47</text>
+  <text x="170" y="126" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="12" font-weight="400" text-anchor="middle" fill="#2b2622">Table 7 · Covers 4</text>
+  <line x1="22" y1="138" x2="318" y2="138" stroke="#8a8178" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="22" y="152" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">1 Mixed Meze Platter</text>
+  <text x="318" y="152" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">12.50</text>
+  <text x="22" y="172" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">1 Halloumi Fries</text>
+  <text x="318" y="172" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">6.95</text>
+  <text x="22" y="192" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">2 Adana Kebab</text>
+  <text x="318" y="192" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">31.00</text>
+  <text x="38" y="207" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="11" font-weight="400" text-anchor="start" fill="#2b2622">@ 15.50</text>
+  <text x="22" y="223" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">1 Chicken Shish</text>
+  <text x="318" y="223" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">14.95</text>
+  <text x="22" y="243" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">1 Shepherd Salad</text>
+  <text x="318" y="243" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">6.50</text>
+  <text x="22" y="263" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">1 Bulgur Pilaf</text>
+  <text x="318" y="263" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">3.95</text>
+  <text x="22" y="283" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">1 Baklava</text>
+  <text x="318" y="283" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">6.95</text>
+  <text x="22" y="303" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">3 Lager (pint)</text>
+  <text x="318" y="303" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">16.20</text>
+  <text x="38" y="318" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="11" font-weight="400" text-anchor="start" fill="#2b2622">@ 5.40</text>
+  <text x="22" y="334" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">1 Ayran</text>
+  <text x="318" y="334" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">2.95</text>
+  <text x="22" y="354" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">1 Cola</text>
+  <text x="318" y="354" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">3.20</text>
+  <line x1="22" y1="366" x2="318" y2="366" stroke="#8a8178" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="22" y="380" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">Subtotal</text>
+  <text x="318" y="380" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">105.15</text>
+  <text x="22" y="400" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">Optional service 12.5%</text>
+  <text x="318" y="400" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">13.14</text>
+  <text x="22" y="424" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="700" text-anchor="start" fill="#2b2622">TOTAL</text>
+  <text x="318" y="424" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="700" text-anchor="end" fill="#2b2622">£118.29</text>
+  <text x="22" y="450" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="start" fill="#2b2622">VAT 20% (included)</text>
+  <text x="318" y="450" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="13" font-weight="400" text-anchor="end" fill="#2b2622">17.53</text>
+  <line x1="22" y1="462" x2="318" y2="462" stroke="#8a8178" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="170" y="476" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="12" font-weight="400" text-anchor="middle" fill="#2b2622">Optional service is shared</text>
+  <text x="170" y="492" font-family="'Courier New', Courier, 'Liberation Mono', monospace" font-size="12" font-weight="400" text-anchor="middle" fill="#2b2622">with our whole team. Thank you!</text>
+  <rect x="100" y="518" width="2" height="34" fill="#2b2622"/>
+  <rect x="106" y="518" width="3" height="34" fill="#2b2622"/>
+  <rect x="112" y="518" width="2" height="34" fill="#2b2622"/>
+  <rect x="117" y="518" width="1" height="34" fill="#2b2622"/>
+  <rect x="122" y="518" width="3" height="34" fill="#2b2622"/>
+  <rect x="128" y="518" width="3" height="34" fill="#2b2622"/>
+  <rect x="136" y="518" width="1" height="34" fill="#2b2622"/>
+  <rect x="141" y="518" width="3" height="34" fill="#2b2622"/>
+  <rect x="148" y="518" width="2" height="34" fill="#2b2622"/>
+  <rect x="155" y="518" width="1" height="34" fill="#2b2622"/>
+  <rect x="160" y="518" width="1" height="34" fill="#2b2622"/>
+  <rect x="164" y="518" width="2" height="34" fill="#2b2622"/>
+  <rect x="171" y="518" width="1" height="34" fill="#2b2622"/>
+  <rect x="177" y="518" width="3" height="34" fill="#2b2622"/>
+  <rect x="183" y="518" width="2" height="34" fill="#2b2622"/>
+  <rect x="190" y="518" width="2" height="34" fill="#2b2622"/>
+  <rect x="196" y="518" width="3" height="34" fill="#2b2622"/>
+  <rect x="202" y="518" width="2" height="34" fill="#2b2622"/>
+  <rect x="207" y="518" width="1" height="34" fill="#2b2622"/>
+  <rect x="212" y="518" width="3" height="34" fill="#2b2622"/>
+  <rect x="218" y="518" width="3" height="34" fill="#2b2622"/>
+  <rect x="226" y="518" width="1" height="34" fill="#2b2622"/>
+  <rect x="231" y="518" width="3" height="34" fill="#2b2622"/>
+</svg>

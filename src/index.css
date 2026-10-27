@@ -1,0 +1,178 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design tokens. Every text/background pair used by the UI is checked for WCAG AA
+ * contrast in src/theme/contrast.test.ts — keep the two blocks below in sync with it.
+ */
+:root {
+  --bg: #fbf7f1;
+  --surface: #ffffff;
+  --surface-2: #f3ede4;
+  --border: #ddd3c4;
+  --text: #1d1733;
+  --muted: #595470;
+  --primary: #c2185b;
+  --primary-hover: #a3134c;
+  --primary-fg: #ffffff;
+  --accent: #9a4d00;
+  --accent-soft: #fff1dc;
+  --success: #046c4e;
+  --success-soft: #e3f6ee;
+  --warning-fg: #6e4300;
+  --warning-bg: #fff2cc;
+  --danger: #b42318;
+  --danger-soft: #fde8e6;
+  --ring: #6d28d9;
+  --glow-1: #ff4f8b;
+  --glow-2: #ffb547;
+  --glow-3: #7c5cff;
+  --person-fg: #1a1033;
+  --shadow: 0 1px 2px rgb(29 23 51 / 0.06), 0 8px 24px rgb(29 23 51 / 0.06);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #110c26;
+  --surface: #1c1638;
+  --surface-2: #261f4a;
+  --border: #3d3470;
+  --text: #f6f3ff;
+  --muted: #bdb6df;
+  --primary: #ff6fa3;
+  --primary-hover: #ff8db6;
+  --primary-fg: #1a0b1f;
+  --accent: #ffc15e;
+  --accent-soft: #3a2a10;
+  --success: #5ee6a0;
+  --success-soft: #0f3326;
+  --warning-fg: #ffdf9e;
+  --warning-bg: #3d2c06;
+  --danger: #ff9c94;
+  --danger-soft: #3d1414;
+  --ring: #c4b5fd;
+  --glow-1: #ff4f8b;
+  --glow-2: #ffb547;
+  --glow-3: #7c5cff;
+  --person-fg: #1a1033;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px rgb(0 0 0 / 0.35);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-display: 'Fredoka', ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-fg: var(--primary-fg);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning-fg: var(--warning-fg);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-ring: var(--ring);
+  --color-person-fg: var(--person-fg);
+  --shadow-card: var(--shadow);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+}
+
+.night-sky {
+  background:
+    radial-gradient(
+      60rem 30rem at 110% -10%,
+      color-mix(in srgb, var(--glow-3) 18%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      40rem 24rem at -20% 0%,
+      color-mix(in srgb, var(--glow-1) 12%, transparent),
+      transparent 60%
+    ),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 0.75rem;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Keeps fixed bottom action bars clear of the iPhone home indicator. */
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+@keyframes scan-sweep {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(var(--sweep-distance, 220px));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

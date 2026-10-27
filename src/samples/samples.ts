@@ -1,0 +1,337 @@
+/**
+ * Built-in demo receipts. All restaurants, people and prices are invented.
+ * They are pre-parsed, so the demo works without calling the vision model.
+ */
+import type { ParsedReceipt } from '../../shared/schemas';
+
+export type SampleId = 'grill' | 'pizza' | 'cafe';
+
+export interface SampleReceipt {
+  id: SampleId;
+  /** Shown on the rendered receipt image only. */
+  address: string[];
+  date: string;
+  time: string;
+  table: string;
+  receipt: ParsedReceipt & { merchant: string };
+  crew: string[];
+  /** i18n keys under samples.* with suggested sentences. */
+  hints: string[];
+  footer: string[];
+}
+
+export const SAMPLES: readonly SampleReceipt[] = [
+  {
+    id: 'grill',
+    address: ['14 Lantern Row', 'London N8 4QX'],
+    date: '14/03/2026',
+    time: '20:47',
+    table: 'Table 7 · Covers 4',
+    crew: ['Ahmet', 'Ayşe', 'Can', 'Sam'],
+    hints: ['hint1', 'hint2', 'hint3'],
+    footer: ['Optional service is shared', 'with our whole team. Thank you!'],
+    receipt: {
+      merchant: 'Ember & Moon Grill',
+      currency: 'GBP',
+      items: [
+        {
+          id: 'g1',
+          name: 'Mixed Meze Platter',
+          quantity: 1,
+          unitPriceMinor: 1250,
+          lineTotalMinor: 1250,
+          category: 'starter',
+          confidence: 0.98,
+        },
+        {
+          id: 'g2',
+          name: 'Halloumi Fries',
+          quantity: 1,
+          unitPriceMinor: 695,
+          lineTotalMinor: 695,
+          category: 'starter',
+          confidence: 0.97,
+        },
+        {
+          id: 'g3',
+          name: 'Adana Kebab',
+          quantity: 2,
+          unitPriceMinor: 1550,
+          lineTotalMinor: 3100,
+          category: 'main',
+          confidence: 0.99,
+        },
+        {
+          id: 'g4',
+          name: 'Chicken Shish',
+          quantity: 1,
+          unitPriceMinor: 1495,
+          lineTotalMinor: 1495,
+          category: 'main',
+          confidence: 0.98,
+        },
+        {
+          id: 'g5',
+          name: 'Shepherd Salad',
+          quantity: 1,
+          unitPriceMinor: 650,
+          lineTotalMinor: 650,
+          category: 'side',
+          confidence: 0.97,
+        },
+        {
+          id: 'g6',
+          name: 'Bulgur Pilaf',
+          quantity: 1,
+          unitPriceMinor: 395,
+          lineTotalMinor: 395,
+          category: 'side',
+          confidence: 0.55,
+        },
+        {
+          id: 'g7',
+          name: 'Baklava',
+          quantity: 1,
+          unitPriceMinor: 695,
+          lineTotalMinor: 695,
+          category: 'dessert',
+          confidence: 0.98,
+        },
+        {
+          id: 'g8',
+          name: 'Lager (pint)',
+          quantity: 3,
+          unitPriceMinor: 540,
+          lineTotalMinor: 1620,
+          category: 'drink',
+          confidence: 0.96,
+        },
+        {
+          id: 'g9',
+          name: 'Ayran',
+          quantity: 1,
+          unitPriceMinor: 295,
+          lineTotalMinor: 295,
+          category: 'drink',
+          confidence: 0.95,
+        },
+        {
+          id: 'g10',
+          name: 'Cola',
+          quantity: 1,
+          unitPriceMinor: 320,
+          lineTotalMinor: 320,
+          category: 'drink',
+          confidence: 0.97,
+        },
+      ],
+      subtotalMinor: 10515,
+      taxLines: [{ label: 'VAT 20% (included)', amountMinor: 1753, includedInPrices: true }],
+      serviceCharge: { label: 'Optional service 12.5%', amountMinor: 1314, ratePercent: 12.5 },
+      discounts: [],
+      totalMinor: 11829,
+      warnings: [],
+    },
+  },
+  {
+    id: 'pizza',
+    address: ['3 Harbour Steps', 'Bristol BS1 9ZZ'],
+    date: '21/03/2026',
+    time: '19:12',
+    table: 'Table 12 · Covers 4',
+    crew: ['Mia', 'Leo', 'Sam', 'Zoe'],
+    hints: ['hint4', 'hint5', 'hint6'],
+    footer: ['Service not included.', 'Grazie, see you soon!'],
+    receipt: {
+      merchant: 'Forno Luna Pizzeria',
+      currency: 'GBP',
+      items: [
+        {
+          id: 'p1',
+          name: 'Garlic Bread',
+          quantity: 1,
+          unitPriceMinor: 550,
+          lineTotalMinor: 550,
+          category: 'starter',
+          confidence: 0.98,
+        },
+        {
+          id: 'p2',
+          name: 'Burrata',
+          quantity: 1,
+          unitPriceMinor: 895,
+          lineTotalMinor: 895,
+          category: 'starter',
+          confidence: 0.97,
+        },
+        {
+          id: 'p3',
+          name: 'Margherita',
+          quantity: 1,
+          unitPriceMinor: 1150,
+          lineTotalMinor: 1150,
+          category: 'main',
+          confidence: 0.99,
+        },
+        {
+          id: 'p4',
+          name: 'Diavola',
+          quantity: 1,
+          unitPriceMinor: 1350,
+          lineTotalMinor: 1350,
+          category: 'main',
+          confidence: 0.99,
+        },
+        {
+          id: 'p5',
+          name: 'Quattro Formaggi',
+          quantity: 1,
+          unitPriceMinor: 1400,
+          lineTotalMinor: 1400,
+          category: 'main',
+          confidence: 0.98,
+        },
+        {
+          id: 'p6',
+          name: 'Rocket & Parmesan Salad',
+          quantity: 1,
+          unitPriceMinor: 595,
+          lineTotalMinor: 595,
+          category: 'side',
+          confidence: 0.96,
+        },
+        {
+          id: 'p7',
+          name: 'Tiramisu',
+          quantity: 1,
+          unitPriceMinor: 695,
+          lineTotalMinor: 695,
+          category: 'dessert',
+          confidence: 0.98,
+        },
+        {
+          id: 'p8',
+          name: 'House Red (bottle)',
+          quantity: 1,
+          unitPriceMinor: 2400,
+          lineTotalMinor: 2400,
+          category: 'drink',
+          confidence: 0.97,
+        },
+        {
+          id: 'p9',
+          name: 'Sparkling Water',
+          quantity: 2,
+          unitPriceMinor: 350,
+          lineTotalMinor: 700,
+          category: 'drink',
+          confidence: 0.96,
+        },
+      ],
+      subtotalMinor: 9735,
+      taxLines: [{ label: 'VAT 20% (included)', amountMinor: 1493, includedInPrices: true }],
+      discounts: [{ label: 'Happy hour 20% off pizzas', amountMinor: 780 }],
+      totalMinor: 8955,
+      warnings: [],
+    },
+  },
+  {
+    id: 'cafe',
+    address: ['27 Willow Lane', 'Manchester M4 7HB'],
+    date: '29/03/2026',
+    time: '11:26',
+    table: 'Table 3 · Covers 3',
+    crew: ['Priya', 'Tom', 'Ella'],
+    hints: ['hint7', 'hint8', 'hint9'],
+    footer: ['Free refills on filter coffee.', 'Have a lovely Sunday!'],
+    receipt: {
+      merchant: 'The Hummingbird Café',
+      currency: 'GBP',
+      items: [
+        {
+          id: 'c1',
+          name: 'Flat White',
+          quantity: 2,
+          unitPriceMinor: 340,
+          lineTotalMinor: 680,
+          category: 'drink',
+          confidence: 0.98,
+        },
+        {
+          id: 'c2',
+          name: 'Oat Latte',
+          quantity: 1,
+          unitPriceMinor: 380,
+          lineTotalMinor: 380,
+          category: 'drink',
+          confidence: 0.97,
+        },
+        {
+          id: 'c3',
+          name: 'Fresh Orange Juice',
+          quantity: 1,
+          unitPriceMinor: 395,
+          lineTotalMinor: 395,
+          category: 'drink',
+          confidence: 0.97,
+        },
+        {
+          id: 'c4',
+          name: 'Full English',
+          quantity: 1,
+          unitPriceMinor: 1250,
+          lineTotalMinor: 1250,
+          category: 'main',
+          confidence: 0.99,
+        },
+        {
+          id: 'c5',
+          name: 'Avocado Toast',
+          quantity: 1,
+          unitPriceMinor: 950,
+          lineTotalMinor: 950,
+          category: 'main',
+          confidence: 0.98,
+        },
+        {
+          id: 'c6',
+          name: 'Buttermilk Pancakes',
+          quantity: 1,
+          unitPriceMinor: 1050,
+          lineTotalMinor: 1050,
+          category: 'main',
+          confidence: 0.98,
+        },
+        {
+          id: 'c7',
+          name: 'Side of Bacon',
+          quantity: 1,
+          unitPriceMinor: 300,
+          lineTotalMinor: 300,
+          category: 'side',
+          confidence: 0.96,
+        },
+        {
+          id: 'c8',
+          name: 'Carrot Cake',
+          quantity: 1,
+          unitPriceMinor: 450,
+          lineTotalMinor: 450,
+          category: 'dessert',
+          confidence: 0.98,
+        },
+      ],
+      subtotalMinor: 5455,
+      taxLines: [{ label: 'VAT 20% (included)', amountMinor: 909, includedInPrices: true }],
+      discounts: [],
+      totalMinor: 5455,
+      warnings: [],
+    },
+  },
+];
+
+export function getSample(id: SampleId): SampleReceipt {
+  const sample = SAMPLES.find((s) => s.id === id);
+  if (!sample) throw new Error(`Unknown sample ${id}`);
+  return sample;
+}

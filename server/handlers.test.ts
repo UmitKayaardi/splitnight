@@ -83,7 +83,10 @@ function deps(ai: AiClient | null, limiter = new RateLimiter(100, 60_000)): Hand
   return { config: getConfig(), ai, limiter };
 }
 
-function imageRequest(bytes: Uint8Array = JPEG, headers: Record<string, string> = {}): Request {
+function imageRequest(
+  bytes: Uint8Array<ArrayBuffer> = JPEG,
+  headers: Record<string, string> = {},
+): Request {
   const form = new FormData();
   form.append('image', new Blob([bytes], { type: 'image/jpeg' }), 'receipt.jpg');
   return new Request('http://localhost/api/parse-receipt', {
