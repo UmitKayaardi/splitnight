@@ -1,0 +1,33 @@
+# Secrets — never commit (only .env.example is allowed)
+.env
+.env.*
+!.env.example
+
+# The owner's real receipt photos and benchmark ground truth
+test-receipts/
+
+# Private planning and reports
+SPLITNIGHT_PLAN.md
+FINAL_REPORT.md
+
+# Dependencies and build output
+node_modules/
+dist/
+dev-dist/
+coverage/
+.vercel/
+
+# Test output
+playwright-report/
+test-results/
+blob-report/
+
+# Benchmark raw outputs (aggregates go to docs/BENCHMARK.md)
+benchmarks/raw/
+
+# Tooling
+.claude/
+*.log
+.DS_Store
+Thumbs.db
+*.tsbuildinfo

@@ -1,0 +1,13 @@
+test-receipts
+.env
+.env.*
+!.env.example
+SPLITNIGHT_PLAN.md
+FINAL_REPORT.md
+node_modules
+dist
+coverage
+playwright-report
+test-results
+benchmarks/raw
+.claude
