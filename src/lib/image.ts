@@ -3,7 +3,7 @@
  * scales the long edge down to ~1600 px and re-encodes as JPEG. Re-encoding through a
  * canvas also drops all EXIF metadata, including GPS location.
  */
-import { ClientApiError } from './api';
+import { ClientApiError } from './errors';
 
 export const MAX_EDGE = 1600;
 const MAX_INPUT_BYTES = 30 * 1024 * 1024;

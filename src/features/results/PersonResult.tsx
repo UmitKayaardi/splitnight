@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useId, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -67,7 +67,7 @@ export function PersonResult({
       </button>
       <AnimatePresence initial={false}>
         {open && (
-          <motion.div
+          <m.div
             id={panelId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
@@ -106,7 +106,7 @@ export function PersonResult({
                 <dd className="tabular">{format(breakdown.totalMinor)}</dd>
               </div>
             </dl>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </li>

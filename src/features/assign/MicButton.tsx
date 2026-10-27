@@ -147,7 +147,7 @@ export function MicButton({
       : { onClick: () => void (recording ? stop() : start()) };
 
   return (
-    <div className="flex shrink-0 flex-col items-center gap-1">
+    <div className="flex w-20 shrink-0 flex-col items-center gap-1 text-center">
       <div className="relative">
         <span
           aria-hidden
@@ -178,7 +178,7 @@ export function MicButton({
       <button
         type="button"
         onClick={() => setMode(mode === 'hold' ? 'tap' : 'hold')}
-        className="min-h-8 rounded-lg px-1 text-[0.7rem] font-medium text-muted underline-offset-2 hover:underline"
+        className="min-h-11 rounded-lg px-1 text-[0.7rem] leading-tight font-medium text-muted underline-offset-2 hover:underline"
         aria-label={`${t('voice.modeLabel')}: ${mode === 'hold' ? t('voice.modeHold') : t('voice.modeTap')}`}
       >
         {mode === 'hold' ? t('voice.modeTap') : t('voice.modeHold')}

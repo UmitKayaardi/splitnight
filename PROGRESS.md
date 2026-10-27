@@ -20,4 +20,3 @@ Resume from the first phase that is not marked done. Run `npm run verify` before
 
 ## Known issues
 
-- Non-English locale files are temporary copies of English until Phase 6.

@@ -15,5 +15,10 @@ One line each: decision — reason.
 - 2026-10-27 · Dish award is "{{dish}} Royalty" rather than "King" — gender-neutral and still playful.
 - 2026-10-27 · Leftover pennies on shared items rotate between sharers by item position — still deterministic, but no one systematically pays the extra penny.
 - 2026-10-27 · Spend-based titles (Big Spender, Light Eater, Dessert Goblin) need a 5 % gap to the runner-up; Fair Share needs a 15 % spread — no titles over rounding pennies. Nights where everything was shared equally may get fewer than three titles, by design.
-- 2026-10-27 · Roulette "Loser covers the desserts" moves the dessert *item* amounts only; each person's share of service/tip stays proportional to what they ordered.
+- 2026-10-27 · Roulette "Loser covers the desserts" moves the dessert _item_ amounts only; each person's share of service/tip stays proportional to what they ordered.
 - 2026-10-27 · Titles are computed without the roulette transfer — they describe what people ordered, not who lost the game.
+- 2026-10-27 · Only English ships in the main bundle; other languages are lazy-loaded chunks — every visitor starts in English anyway.
+- 2026-10-27 · Flow screens are lazy chunks prefetched on idle; framer-motion uses `LazyMotion` + `m` — main bundle went from 216 KB to ~108 KB gzipped.
+- 2026-10-27 · Only Latin/Latin-Ext font subsets are precached by the service worker (Turkish needs Latin-Ext); other subsets still load on demand.
+- 2026-10-27 · `vite preview` serves the same security headers as `vercel.json`, so E2E tests run under the production CSP.
+- 2026-10-27 · Translations are typed against the English source (`Translation` type) and tested for missing/extra keys and mismatched `{{placeholders}}`.

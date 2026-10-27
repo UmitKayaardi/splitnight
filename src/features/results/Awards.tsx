@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Avatar } from '../../components/Person';
 import { AWARD_EMOJI, type Award } from '../../lib/awards';
@@ -21,7 +21,7 @@ export function Awards({ awards, people }: { awards: Award[]; people: Person[] }
           const person = people.find((p) => p.id === award.personId);
           if (!person) return null;
           return (
-            <motion.li
+            <m.li
               key={award.id}
               initial={reduced ? false : { opacity: 0, y: 12, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -46,7 +46,7 @@ export function Awards({ awards, people }: { awards: Award[]; people: Person[] }
                 <Avatar person={person} size="sm" />
                 <span className="max-w-16 truncate text-xs font-medium">{person.name}</span>
               </span>
-            </motion.li>
+            </m.li>
           );
         })}
       </ul>

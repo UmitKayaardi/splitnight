@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowRight, Pencil, Plus, Users, X } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -92,7 +92,7 @@ export function NameTag({
 }) {
   const { t } = useTranslation();
   return (
-    <motion.li
+    <m.li
       layout
       initial={{ scale: 0.6, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
@@ -121,7 +121,7 @@ export function NameTag({
       >
         <X aria-hidden className="size-4" />
       </button>
-    </motion.li>
+    </m.li>
   );
 }
 

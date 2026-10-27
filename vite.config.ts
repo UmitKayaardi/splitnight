@@ -3,6 +3,12 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import type { IncomingMessage, ServerResponse } from 'node:http';
+import vercel from './vercel.json';
+
+/** The production security headers (vercel.json), also served by `vite preview` so E2E tests run under the real CSP. */
+const securityHeaders = Object.fromEntries(
+  (vercel.headers.find((h) => h.source === '/(.*)')?.headers ?? []).map((h) => [h.key, h.value]),
+);
 
 /**
  * Serves the Vercel functions in /api during `npm run dev`, so the whole app runs
@@ -88,13 +94,17 @@ export default defineConfig(({ mode }) => {
           ],
         },
         workbox: {
-          globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+          // Only the Latin font subsets are precached; others still load on demand.
+          globPatterns: ['**/*.{js,css,html,svg,png}', '**/*latin*.woff2'],
           navigateFallback: '/index.html',
           navigateFallbackDenylist: [/^\/api\//],
           runtimeCaching: [],
         },
       }),
     ],
+    preview: {
+      headers: securityHeaders,
+    },
     build: {
       target: 'es2022',
       chunkSizeWarningLimit: 600,

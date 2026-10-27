@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Check, MessageSquareText, Pencil, Sparkles, Undo2, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { AssignResponse } from '../../../shared/schemas';
@@ -62,7 +62,7 @@ export function ProposalPanel({
   });
 
   return (
-    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+    <m.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
       <Card as="section" className="overflow-hidden">
         <div className="flex items-center gap-2 bg-surface-2 px-4 py-2.5">
           <Sparkles aria-hidden className="size-5 text-primary" />
@@ -140,6 +140,6 @@ export function ProposalPanel({
           )}
         </div>
       </Card>
-    </motion.div>
+    </m.div>
   );
 }

@@ -1,4 +1,4 @@
-import { animate, motion, useMotionValue } from 'framer-motion';
+import { animate, m, useMotionValue } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../components/ui';
@@ -81,7 +81,7 @@ export function WheelGame({ players, onRoundEnd }: GameProps) {
           role="img"
           aria-label={t('roulette.modeWheel')}
         >
-          <motion.g style={{ rotate: rotation }}>
+          <m.g style={{ rotate: rotation }}>
             {players.map((p, i) => {
               const mid = ((i + 0.5) / n) * 360;
               const won = landed === p.id;
@@ -107,7 +107,7 @@ export function WheelGame({ players, onRoundEnd }: GameProps) {
                 </g>
               );
             })}
-          </motion.g>
+          </m.g>
           <circle r="20" fill="#1a1033" stroke="#fff4dc" strokeWidth="3" />
           <text textAnchor="middle" dominantBaseline="central" fontSize="18">
             🌙
@@ -158,7 +158,7 @@ export function CardsGame({ players, onRoundEnd }: GameProps) {
           const isLoser = owner && index === losingCard;
           return (
             <li key={index}>
-              <motion.button
+              <m.button
                 type="button"
                 onClick={() => pickCard(index)}
                 disabled={!!owner || done}
@@ -190,7 +190,7 @@ export function CardsGame({ players, onRoundEnd }: GameProps) {
                   </span>
                   <span className="max-w-full truncate text-[0.7rem]">{owner?.name}</span>
                 </span>
-              </motion.button>
+              </m.button>
             </li>
           );
         })}
@@ -228,7 +228,7 @@ export function CoinGame({ players, onRoundEnd }: GameProps) {
         <br />
         {t('roulette.tails', { name: b.name })}
       </p>
-      <motion.div
+      <m.div
         animate={flipping && side === null && !reduced ? { rotateY: [0, 1800] } : { rotateY: 0 }}
         transition={{ duration: 1.6, ease: 'easeOut' }}
         className="flex size-36 items-center justify-center rounded-full border-4 border-[#fff4dc] font-display text-4xl font-bold text-person-fg shadow-card"
@@ -237,7 +237,7 @@ export function CoinGame({ players, onRoundEnd }: GameProps) {
         }}
       >
         {shown ? initials(shown.name) : '🌙'}
-      </motion.div>
+      </m.div>
       <Button size="lg" onClick={flip} disabled={flipping}>
         {flipping ? t('roulette.flipping') : t('roulette.flip')}
       </Button>
@@ -295,14 +295,14 @@ export function DiceGame({ players, onRoundEnd }: GameProps) {
                 {initials(p.name)}
               </span>
               <span className="min-w-0 flex-1 truncate text-sm font-medium">{p.name}</span>
-              <motion.span
+              <m.span
                 aria-label={value ? t('roulette.rolled', { name: p.name, value }) : undefined}
                 animate={rolling && active && !reduced ? { rotate: [0, 360, 720] } : { rotate: 0 }}
                 transition={{ duration: 0.9 }}
                 className="text-4xl leading-none"
               >
                 {value ? DIE_FACES[value - 1] : '🎲'}
-              </motion.span>
+              </m.span>
             </li>
           );
         })}

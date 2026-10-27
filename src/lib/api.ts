@@ -12,15 +12,9 @@ import {
   type AssignRequest,
   type ErrorCode,
 } from '../../shared/schemas';
+import { ClientApiError } from './errors';
 
-export type ClientErrorCode = ErrorCode | 'OFFLINE' | 'NETWORK';
-
-export class ClientApiError extends Error {
-  constructor(readonly code: ClientErrorCode) {
-    super(code);
-    this.name = 'ClientApiError';
-  }
-}
+export { ClientApiError, errorCodeOf, type ClientErrorCode } from './errors';
 
 const STATUS_CODES: Record<number, ErrorCode> = {
   400: 'BAD_INPUT',
@@ -110,8 +104,4 @@ export function assign(body: AssignRequest, signal?: AbortSignal) {
 
 export function health(signal?: AbortSignal) {
   return request('/api/health', { method: 'GET' }, HealthSchema, signal);
-}
-
-export function errorCodeOf(error: unknown): ClientErrorCode {
-  return error instanceof ClientApiError ? error.code : 'UPSTREAM';
 }

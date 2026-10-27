@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Camera, Keyboard, Sparkles } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -143,14 +143,14 @@ function ScanAttempt() {
       <ReceiptIllustration sweeping={!reduced} />
       <div aria-live="polite" className="min-h-16">
         <h1 className="font-display text-2xl font-bold">{t('scan.title')}</h1>
-        <motion.p
+        <m.p
           key={preparing ? 'prep' : message}
           initial={reduced ? false : { opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           className="mt-1 text-muted"
         >
           {preparing ? t('scan.preparing') : t(MESSAGES[message]!)}
-        </motion.p>
+        </m.p>
       </div>
       <Button variant="ghost" onClick={() => go('home')}>
         {t('scan.cancel')}

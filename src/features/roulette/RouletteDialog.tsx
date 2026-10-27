@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Dices, PartyPopper, RotateCcw } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -201,7 +201,7 @@ export default function RouletteDialog({ onClose }: { onClose: () => void }) {
       )}
 
       {phase === 'result' && loser && (
-        <motion.div
+        <m.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           className="flex flex-col items-center gap-4 py-4 text-center"
@@ -233,7 +233,7 @@ export default function RouletteDialog({ onClose }: { onClose: () => void }) {
               {t('roulette.playAgain')}
             </Button>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </Dialog>
   );

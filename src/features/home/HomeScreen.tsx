@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
   ArrowRight,
   Camera,
@@ -71,13 +71,13 @@ export function HomeScreen() {
       onDrop={onDrop}
     >
       <section className="flex flex-col items-center pt-6 pb-8 text-center sm:pt-12">
-        <motion.div
+        <m.div
           initial={{ scale: 0.85, opacity: 0, rotate: -8 }}
           animate={{ scale: 1, opacity: 1, rotate: 0 }}
           transition={{ type: 'spring', stiffness: 220, damping: 16 }}
         >
           <Logo size={88} className="drop-shadow-[0_10px_30px_rgba(255,79,139,0.35)]" />
-        </motion.div>
+        </m.div>
         <h1 className="mt-4 text-5xl sm:text-6xl">
           <Wordmark />
         </h1>

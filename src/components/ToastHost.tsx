@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { CheckCircle2, Info, TriangleAlert, X } from 'lucide-react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -31,7 +31,7 @@ export function ToastHost() {
     >
       <AnimatePresence>
         {current && (
-          <motion.div
+          <m.div
             key={current.id}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export function ToastHost() {
             >
               <X aria-hidden className="size-4" />
             </button>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

@@ -89,7 +89,7 @@ export function Composer() {
           <textarea
             id="assign-input"
             ref={inputRef}
-            rows={2}
+            rows={3}
             value={text}
             maxLength={1000}
             placeholder={t('assign.placeholder')}
@@ -100,7 +100,7 @@ export function Composer() {
                 void send(text);
               }
             }}
-            className={`${inputClass} block min-h-16 resize-none py-2.5 pr-14 leading-snug`}
+            className={`${inputClass} block min-h-24 resize-none py-2.5 pr-14 leading-snug`}
           />
           <button
             type="submit"
